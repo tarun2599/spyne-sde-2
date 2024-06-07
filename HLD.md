@@ -32,7 +32,7 @@
     * **Tasks**:
         * Fetch tasks from the queue.
         * Pass CSV rows and send image URLs to the image processing service.
-        * Update the database by creating entries for each image with processing status.
+        * Update the database by creating entries for each image with "processing" status and the request collection with "processing" status as soon as first row of a csv starts processing.
     * **Implementation**:
         * Fetch tasks from the queue and pass the row data to image processing service.
         * Update the database with processing results and status.
