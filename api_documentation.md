@@ -49,10 +49,11 @@
         * `request_id`: The unique ID provided when the CSV was uploaded.
 * **Response Format**:
     * Success Response (HTTP 200): \
-`{`
+
 
 
 ```
+{
   "request_id": "unique_request_id",
   "status": "current_status",
   "processed_rows": [
@@ -90,10 +91,11 @@
     * Headers:
         * `Content-Type: application/json`
     * Body: \
-`{`
+
 
 
 ```
+{
   "request_id": "unique_request_id",
   "unique_id": "unique_row_id",
   "processed_urls": "processed_image_urls",
