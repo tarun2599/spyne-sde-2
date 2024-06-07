@@ -102,3 +102,26 @@
   "status": "completed"
 }
 ```
+
+* **Response Format**:
+    * Success Response (HTTP 200):
+
+
+```
+{
+  "message": "Webhook processed successfully"
+}
+
+```
+
+
+
+    * Error Response (HTTP  500):
+
+
+```
+{
+  "error": "Error message indicating the issue"
+}
+```
+
