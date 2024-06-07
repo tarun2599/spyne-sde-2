@@ -30,12 +30,12 @@
         * Typically implemented using message queue systems like Apache KAFKA.
         * Tasks are enqueued with relevant data (request ID, CSV rows) and processed by worker nodes asynchronously.
 4. **Worker Nodes**:
-    * **Function**: Retrieve tasks from the queue, process CSV data, and interact with the image processing service.
+    * **Function**: Retrieve tasks from the queue, extract CSV data, and call the image processing service with the data.
     * **Role**: Execute the actual processing tasks asynchronously.
     * **Tasks**:
         * Fetch tasks from the queue.
         * Pass CSV rows and send image URLs to the image processing service.
-        * Track processing status and update the database.
+        * Update the database by creating entries for each image with processing status.
     * **Implementation**:
         * Fetch tasks from the queue and pass the row data to image processing service.
         * Update the database with processing results and status.
@@ -49,11 +49,11 @@
         * Sends a callback to the webhook handler upon completion.
 6. **Webhook Handler**:
     * **Function**: Listens for callbacks from the image processing service when processing is complete.
-    * **Role**: Updates the database with processing results and changes request statuses accordingly.
+    * **Role**: Updates the database with processing results and changes statuses accordingly.
     * **Implementation**:
         * Receives POST requests from the image processing service with processing results.
         * Updates the `Images` table with processed image URLs and status.
-        * Checks if all rows for a request are processed and updates the request status to "completed" if applicable.
+        * Checks if all rows for a request are processed and updates the request status to "completed" if applicable in the requests collection, and the images collection.
 7. **Database**:
     * **Function**: Stores product data, tracks the status of each processing request, and saves processed image URLs.
     * **Role**: Provides persistent storage and retrieval of data related to the image processing tasks.
