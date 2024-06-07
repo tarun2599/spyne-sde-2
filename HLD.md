@@ -16,7 +16,6 @@
         * Enqueues the task for asynchronous processing in asynchronous task queue.
         * Responds with the unique request ID.
     
-
 2. **Status API**:
     * **Function**: Provides an endpoint for clients to check the processing status of their requests using the request ID.
     * **Role**: Allows clients to monitor the progress and completion status of their image processing requests.
@@ -24,7 +23,6 @@
         * Receives a GET request with the request ID.
         * Queries the database for the status and results of the specified request.
         * Responds with the current status and processed image URLs.
-
 3. **Asynchronous Task Queue**:
     * **Function**: Manages and distributes processing tasks to worker nodes for asynchronous processing.
     * **Role**: Decouples task submission from task processing, enabling scalable and efficient handling of image processing tasks.
@@ -56,3 +54,12 @@
         * Receives POST requests from the image processing service with processing results.
         * Updates the `Images` table with processed image URLs and status.
         * Checks if all rows for a request are processed and updates the request status to "completed" if applicable.
+7. **Database**:
+    * **Function**: Stores product data, tracks the status of each processing request, and saves processed image URLs.
+    * **Role**: Provides persistent storage and retrieval of data related to the image processing tasks.
+    * **Implementation**:
+        * Tables:
+            * **Requests**: Stores the unique request ID, status, and timestamps.
+            * **Images**: Stores the unique row ID from the CSV, original image URLs, processed image URLs, and processing status.
+        * Relationships:
+            * The `Images` table references the `Requests` table via a foreign key (`request_id`).
