@@ -23,11 +23,10 @@
 4. **Example Scenario**:
     * When a CSV file is uploaded, the worker nodes receive tasks from the queue.
     * Each worker node fetches a task and processes a portion of the CSV data.
-    * They interact with the image processing service to transform the images asynchronously.
-    * Upon completion, they update the database with the processed image URLs and mark the task as "completed".
+    * They call the image processing service to transform the images asynchronously.
     * If any errors occur during processing, they handle them gracefully and update the task status accordingly.
 5. **Implementation**:
-    * Can be implemented using various technologies such as Celery, RabbitMQ, Apache Kafka, or cloud-based solutions like AWS SQS.
+    * Can be implemented using various technologies such as Apache Kafka
     * Worker nodes are typically long-running processes or services that continuously listen for incoming tasks.
     * They can be deployed on separate servers or containers to distribute the processing load and ensure fault tolerance.
 
