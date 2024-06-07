@@ -48,7 +48,7 @@
     * Path Parameter:
         * `request_id`: The unique ID provided when the CSV was uploaded.
 * **Response Format**:
-    * Success Response (HTTP 200): \
+    * Success Response (HTTP 200): 
 
 
 
