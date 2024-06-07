@@ -26,12 +26,12 @@
 
 
 
-    * Error Response (HTTP 500):
+    * Error Response (HTTP 403 || 500):
 
 
 ```
 {
-  "error": "Validation error message"
+  "error": "Validation error message" || "server error"
 }
 ```
 
@@ -59,8 +59,8 @@
   "processed_rows": [
     {
       "unique_id": "unique_id",
-      "original_urls": "original_image_urls",
-      "processed_urls": "processed_image_urls"
+      "original_urls": [original_image_urls],
+      "processed_urls": [processed_image_urls]
     }
   ]
 }
@@ -69,13 +69,15 @@
 
 
 
-    * Error Response (HTTP 500):
+    * Error Response (HTTP 404 || 500):
 
 
 ```
 {
-  "error": "Error message indicating the issue"
+  "error": "request id not found" || "server error"
 }
+
+
 ```
 
 
@@ -86,7 +88,7 @@
 
 * **Endpoint**: `/webhook`
 * **Method**: `POST`
-* **Description**: Listens for callbacks from the image processing service, updates the database with the processing results, and changes request statuses.
+* **Description**: Listens for callbacks from the image processing service, updates the database with the processing results, and changes request and image table statused.
 * **Request Format**:(Assumed)
     * Headers:
         * `Content-Type: application/json`
@@ -98,30 +100,9 @@
 {
   "request_id": "unique_request_id",
   "unique_id": "unique_row_id",
-  "processed_urls": "processed_image_urls",
+  "processed_urls": [processed_image_urls],
   "status": "completed"
 }
-```
-
-* **Response Format**:
-    * Success Response (HTTP 200):
 
 
-```
-{
-  "message": "Webhook processed successfully"
-}
-
-```
-
-
-
-    * Error Response (HTTP  500):
-
-
-```
-{
-  "error": "Error message indicating the issue"
-}
-```
 
