@@ -32,7 +32,7 @@
     * **Tasks**:
         * Fetch tasks from the queue.
         * Pass CSV rows and send image URLs to the image processing service.
-        * Update the database by creating entries for each image with "processing" status and the request collection with "processing" status as soon as first row of a csv starts processing.
+        * Update the database by creating entries in image table for each image with "processing" status and the request table with "processing" status as soon as first row of a csv starts processing.
     * **Implementation**:
         * Fetch tasks from the queue and pass the row data to image processing service.
         * Update the database with processing results and status.
@@ -50,7 +50,7 @@
     * **Implementation**:
         * Receives POST requests from the image processing service with processing results.
         * Updates the `Images` table with processed image URLs and status.
-        * Checks if all rows for a request are processed and updates the request status to "completed" if applicable in the requests collection, and the images collection.
+        * Checks if all rows for a request are processed and updates the request status to "completed" if applicable in the requests table, and the image table.
 7. **Database**:
     * **Function**: Stores product data, tracks the status of each processing request, and saves processed image URLs.
     * **Role**: Provides persistent storage and retrieval of data related to the image processing tasks.
