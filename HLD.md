@@ -1,9 +1,6 @@
 **High Level Design Document**
 
-
 #### **Detailed Description of Each Component:**
-
-
 
 1. **Upload API**:
     * **Function**: Handles the upload of CSV files from clients. Performs basic validation of the CSV format and content.
